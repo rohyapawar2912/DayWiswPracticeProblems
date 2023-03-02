@@ -1,0 +1,15 @@
+# Generate 5 random 2-digit values
+values=( $(shuf -i 10-99 -n 5) )
+
+# Calculate sum and average
+sum=0
+for value in "${values[@]}"
+do
+    sum=$((sum + value))
+done
+avg=$(echo "scale=2; $sum / ${#values[@]}" | bc)
+
+# Print the results
+echo "The values are: ${values[*]}"
+echo "The sum is: $sum"
+echo "The average is: $avg"
